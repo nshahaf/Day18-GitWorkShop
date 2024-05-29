@@ -1,5 +1,10 @@
+* {
+    box-sizing: border-box;
+}
 body {
     background-color: black;
+    text-align: center;
+    
 }
 
 h1{ 
@@ -7,10 +12,17 @@ h1{
 }
 
 .ball {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: yellow;
     margin: auto;
+
+    background-color: yellow;
+    font-size: 22px;
+    font-weight: bold;
     
 }
