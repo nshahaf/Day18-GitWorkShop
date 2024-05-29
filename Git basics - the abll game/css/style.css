@@ -17,20 +17,17 @@ h1{
     align-items: center;
 
     max-width: 400px;
-    max-height: 400px;
+    min-width: 100px;
     width: 100px;
-    height: 100px;
+    aspect-ratio: 1;
     border-radius: 50%;
     margin: auto;
     margin-top: 30px;
+
     background-color: yellow;
     font-size: 22px;
     font-weight: bold;
 
     transition: width 1s, height 1s;
-    
-}
-
-.ball2 {
     
 }

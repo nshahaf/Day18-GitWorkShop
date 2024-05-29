@@ -1,51 +1,50 @@
 'use strict'
 var serialId = 0
 var balls = [
-    {diameter: 100, backgroundColor: 'yellow'},
-    {diameter: 100, backgroundColor: 'yellow'},
-    {diameter: 100, backgroundColor: 'yellow'},
-    {diameter: 100, backgroundColor: 'yellow'},
-    {diameter: 100, backgroundColor: 'yellow'}
+    { diameter: 100, backgroundColor: 'yellow' },
+    { diameter: 100, backgroundColor: 'yellow' },
+    { diameter: 100, backgroundColor: 'yellow' },
+    { diameter: 100, backgroundColor: 'yellow' },
+    { diameter: 100, backgroundColor: 'yellow' }
 ]
 
-function onBallClick(elBall,idx) {
+function onBallClick(elBall, idx) {
     console.log('clicked!')
     var currBall = balls[idx]
-    
+
     //diameter
-    currBall.diameter >= 400? currBall.diameter = 100 : currBall.diameter += getRandomInt(20,61)
-    elBall.style.height = currBall.diameter + 'px'
+    currBall.diameter += getRandomInt(20, 61)
+    if(currBall.diameter > 400) currBall.diameter = 100
     elBall.style.width = currBall.diameter + 'px'
 
     //random color
-    var randColor = getRandomColor()
-    currBall.backgroundColor = randColor
-
-    elBall.style.backgroundColor = randColor
+    currBall.backgroundColor = elBall.style.backgroundColor = getRandomColor()
     elBall.innerText = currBall.diameter
-    
 }
 
 function swapBall1and2() {
-    var ballIdx1 = balls.splice(1,1)
+    var ballIdx1 = balls.splice(1, 1)
     balls.unshift(ballIdx1[0])
+    renderBalls()
+}
 
-    var elBall1 = document.querySelector('.ball1')
-    var elBall2 = document.querySelector('.ball2') 
-    
-        elBall1.style.width = balls[0].diameter
-        elBall1.style.height = balls[0].diameter
-        elBall1.innerText = balls[0].diameter
-        elBall1.style.backgroundColor = balls[0].backgroundColor
-        
-        elBall2.style.width = balls[1].diameter
-        elBall2.style.height = balls[1].diameter
-        elBall2.innerText = balls[1].diameter
-        elBall2.style.backgroundColor = balls[1].backgroundColor
+function reduceBall1and2() {
+    for (var i = 0; i <=1;i++) {
+        balls[i].diameter -= getRandomInt(20, 61)
+        if(balls[i].diameter < 100) balls[i].diameter = 100
+    }
+    renderBalls()
 
-    
 
-    
-    
-    
+}
+
+function renderBalls() {
+    var elBalls = document.querySelectorAll('.ball')
+
+    for (var i = 0; i < elBalls.length; i++) {
+        elBalls[i].style.width = balls[i].diameter + 'px'
+        elBalls[i].innerText = balls[i].diameter
+        elBalls[i].style.backgroundColor = balls[i].backgroundColor
+    }
+
 }
