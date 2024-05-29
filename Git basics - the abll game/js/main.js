@@ -1,15 +1,15 @@
 'use strict'
-var ballDiameter = 100
+var ballDiameter = [100,100]
 
-function onBallClick(elBall) {
+function onBallClick(elBall,idx) {
     console.log('clicked!')
     
-    ballDiameter >= 400? ballDiameter = 100 : ballDiameter += getRandomInt(20,61)
+    ballDiameter[idx] >= 400? ballDiameter[idx] = 100 : ballDiameter[idx] += getRandomInt(20,61)
 
-    elBall.style.height = ballDiameter + 'px'
-    elBall.style.width = ballDiameter + 'px'
+    elBall.style.height = ballDiameter[idx] + 'px'
+    elBall.style.width = ballDiameter[idx] + 'px'
 
     elBall.style.backgroundColor = getRandomColor()
-    elBall.innerText = ballDiameter
+    elBall.innerText = ballDiameter[idx]
 
 }
