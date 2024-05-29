@@ -13,6 +13,6 @@ function onBallClick(elBall,idx) {
     elBall.style.backgroundColor = getRandomColor()
     elBall.innerText = ballDiameter[idx]
     
-    elBall.innerText = ballDiameter
+    elBall.innerText = ballDiameter[idx]
 
 }
