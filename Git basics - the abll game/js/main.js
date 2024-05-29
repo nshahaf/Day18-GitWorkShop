@@ -1,12 +1,21 @@
 'use strict'
-var serialId = 0
-var balls = [
-    { diameter: 100, backgroundColor: 'yellow' },
-    { diameter: 100, backgroundColor: 'yellow' },
-    { diameter: 100, backgroundColor: 'yellow' },
-    { diameter: 100, backgroundColor: 'yellow' },
-    { diameter: 100, backgroundColor: 'yellow' }
-]
+var balls
+var gTimeoutInterval
+
+
+function onInit() {
+    balls = [
+        { diameter: 100, backgroundColor: 'yellow' },
+        { diameter: 100, backgroundColor: 'yellow' },
+        { diameter: 100, backgroundColor: 'yellow' },
+        { diameter: 100, backgroundColor: 'yellow' },
+        { diameter: 100, backgroundColor: 'yellow' },
+        { diameter: 100, backgroundColor: 'yellow' }
+    ]
+    document.querySelector('body').style.backgroundColor = 'black'
+    renderBalls()
+
+}
 
 function onBallClick(elBall, idx) {
     console.log('clicked!')
@@ -14,7 +23,7 @@ function onBallClick(elBall, idx) {
 
     //diameter
     currBall.diameter += getRandomInt(20, 61)
-    if(currBall.diameter > 400) currBall.diameter = 100
+    if (currBall.diameter > 400) currBall.diameter = 100
     elBall.style.width = currBall.diameter + 'px'
 
     //random color
@@ -29,19 +38,36 @@ function onBall3Click() {
 }
 
 function onBall4Click() {
-    for (var i = 0; i <=1;i++) {
+    for (var i = 0; i <= 1; i++) {
         balls[i].diameter -= getRandomInt(20, 61)
-        if(balls[i].diameter < 100) balls[i].diameter = 100
+        if (balls[i].diameter < 100) balls[i].diameter = 100
     }
     renderBalls()
 
 
 }
 
-function onBall5Click () {
+function onBall5Click() {
     document.querySelector('body').style.backgroundColor = getRandomColor()
 }
 
+function onBall6Click() {
+    onInit()
+}
+
+function onBall6Hover() {
+    clearTimeoutInterval()
+    gTimeoutInterval = setTimeout(() => {
+        console.log('2sec passed')
+    
+    },2000)
+
+}
+
+function clearTimeoutInterval() {
+    clearTimeout (gTimeoutInterval)
+    console.log('timeout cleared')
+}
 
 function renderBalls() {
     var elBalls = document.querySelectorAll('.ball')
