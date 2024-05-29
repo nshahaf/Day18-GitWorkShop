@@ -1,17 +1,14 @@
 'use strict'
-var ball = { h: 100, w: 100 }
+var ballDiameter = 100
 
 function onBallClick(elBall) {
     console.log('clicked!')
-    // console.log('elBall:', elBall)
-    // console.log('elBall.innerText:',elBall.innerText)
-    // console.log('elBall.style:',elBall.style)
-    ball.h += 50
-    ball.w += 50
+    
+    ballDiameter >= 400? ballDiameter = 100 : ballDiameter +=50
 
-    elBall.style.height = ball.h + 'px'
-    elBall.style.width = ball.w + 'px'
+    elBall.style.height = ballDiameter + 'px'
+    elBall.style.width = ballDiameter + 'px'
 
-    elBall.innerText = ball.h
+    elBall.innerText = ballDiameter
 
 }
