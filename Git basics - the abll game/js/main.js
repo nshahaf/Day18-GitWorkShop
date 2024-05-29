@@ -22,13 +22,13 @@ function onBallClick(elBall, idx) {
     elBall.innerText = currBall.diameter
 }
 
-function swapBall1and2() {
+function onBall3Click() {
     var ballIdx1 = balls.splice(1, 1)
     balls.unshift(ballIdx1[0])
     renderBalls()
 }
 
-function reduceBall1and2() {
+function onBall4Click() {
     for (var i = 0; i <=1;i++) {
         balls[i].diameter -= getRandomInt(20, 61)
         if(balls[i].diameter < 100) balls[i].diameter = 100
@@ -37,6 +37,11 @@ function reduceBall1and2() {
 
 
 }
+
+function onBall5Click () {
+    document.querySelector('body').style.backgroundColor = getRandomColor()
+}
+
 
 function renderBalls() {
     var elBalls = document.querySelectorAll('.ball')
